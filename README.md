@@ -1,88 +1,43 @@
 # Multi-Theme Strategy in Tailwind CSS - Playground App
 
-Welcome to this Pro Tailwind workshop!
+It's time to try our multi-theme Tailwind CSS plugin in a "real-world" application.
 
-This app is similar to the [Calendar App](https://calendar-app.protailwind.com), but the theming part of it has been stripped out and "prepared" to be implemented.
+The code for the plugin (at this point in the course) has been copied over to the `plugins/multi-theme.js` file.
 
-There is no need to clone this app on your local machine for the workshop - but you can if you want.
+The first step is to register the `multi-theme` plugin in the project's `tailwind.config.js` file.
 
-We'll use [GitPod](https://gitpod.io) during the workshop, to make working on the project a one-click affair.
+## Some implementation suggestions
 
-Want to try it out? Click on the button below to start a new workspace!
+### Start small, with one component!
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/pro-tailwind/workshop-multi-theme)
+Open `components/background-decoration.jsx`. Try replacing all instances of `indigo` with our `primary` theme color.
 
-## Building our plugin in Tailwind Play
+What happened? Is that what you expected?
 
-In this workshop, we'll build a Tailwind CSS plugin that brings support for multiple color themes to any project using Tailwind.
+Now add a the `data-theme="candy"` attribute to the parentmost element on that component.
 
-We'll do most of our work in a series of Tailwind Play challenges, but at some point we'll test our code again this Playground App.
+Is it working?
 
-The workshop has its own website: https://theming.protailwind.com
+### Ready to roll out theming to the whole app?
 
----
+How about YOLO-ing a project-wide "search and replace" and change all instances of `indigo` to `primary`?
 
-## Workshop Schedule
+After that, go in the `pages/_app.jsx` file. This is the "shell" that is common to all pages in a Next.js project.
 
-Here's what the workshop timetable will look like:
+We could add a `data-theme` attribute there (try it!), but you'll hit subtle problems that way.
 
-| Time              | What    | Length | Topic                      |
-| ----------------- | ------- | ------ | -------------------------- |
-| 1:00 PM - 1:15 PM | Intro   | 15 min | Meet & Greet, Housekeeping |
-| 1:15 PM - 2:15 PM | Content | 60 min | Theming strategy part 1    |
-| 2:15 PM - 2:30 PM | Break   | 15 min | Coffee/Snacks              |
-| 2:30 PM - 3:45 PM | Content | 75 min | Theming strategy part 2    |
-| 3:45 PM - 4:00 PM | Break   | 15 min | Coffee/Snacks              |
-| 4:00 PM - 5:00 PM | Content | 60 min | Theming strategy part 3    |
+Things like the `timezone-picker` components get injected in a `Portal` which sits **outside** of this app shell. So the background color of the timezone picker modal will not change!
 
----
+Luckily we've got a <ThemeSwitcher /> component ready at the start of the `_app.jsx` markup.
 
-### Focus groups & breakout rooms
+Have a look at that file to see what it does!
 
-You'll be split in small focus groups for today's workshop challenges. This consists of separate "breakout rooms", where each member of the group will take turns "driving" a challenge by sharing their screen.
+This component takes care of adding the data-attribute to the <body> element, and also provides a sweet dropdown menu on the top-right of our app.
 
-The groups will remain the same for the entire workshop.
+You can see we're using an `activeTheme` piece of state, set to "base" by default.
 
-At the end of challenges, we'll all come back together to discuss. "Pairing" in small groups and actively participating to group discusions are key to this workshop. They'll help you maximise your learning experience.
+Uncomment that <ThemeSwitcher /> line in `_app,jsx`, and toggle themes with the neat little switcher on the top right!
 
-I really encourage everyone to participate actively, ask questions, and of course be supportive of one another!
+### Remember, our theming strategy is "nestable"
 
----
-
-### Aaaand... who am I?
-
-I'm Simon, your workshop instructor. 👋
-
-If you've watched some YouTube videos from the Tailwind Labs channel, you've most probably seen my face already!
-
-I love utility-first CSS. I've been supporting and promoting this styling approach even before Tailwind CSS existed! I'm a front-end developer, designer and content creator.
-
-I bring a lot of enthusiasm and positive energy in everything I do, this is just how I'm wired up!
-
-I have been teaching in-person workshops for multiple senior engineering teams, and a constant piece of feedback I get is my workshops are exciting, fun and engaging. To me, that's the best way to learn!
-
-I sometimes speak at conferences and meetups. I make YouTube videos and I'm also an instructor on [egghead.io](https://egghead.io).
-
-You can connect with me on Twitter, I'm [simonswiss](https://twitter.com/simonswiss) 🇨🇭
-
-I'm super excited to dive into this workshop with you.
-
----
-
-### 📜 Assumptions
-
-This workshop assumes the following:
-
-- You are already familiar with Tailwind CSS and its core concepts
-- You are comfortable enough with CSS and JavaScript
-
----
-
-### 📋 Dev Environment Requirements
-
-You don't need to install anything on your machine for this workshop. However, if you want to get this workshop app running locally, you should have the following installed in your development environment:
-
-- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) >= 2.34.1
-- [Node](https://nodejs.org/en/download/) >= 12.18.4
-
-See you at the workshop!
+Just for fun, try add different theme scopes to different components, just to see how powerful our composable theming strategy is!

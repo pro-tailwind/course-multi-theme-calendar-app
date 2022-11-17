@@ -1,3 +1,15 @@
+/*
+  ------------------------------
+  TODO:
+  1. Find and replace all instances of `indigo` 
+  with our themable `primary` color.
+
+  2. Add a `data-theme="candy"` attribute to 
+  the parentmost element to check if our 
+  theming strategy is working!
+  ------------------------------
+*/
+
 export function BackgroundDecoration({ selectedDate }) {
   return (
     <div aria-hidden="true" className="background-split fixed inset-0 grid">

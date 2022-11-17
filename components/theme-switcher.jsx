@@ -1,15 +1,20 @@
-import { Fragment, useEffect } from 'react'
+import { Fragment, useEffect, useState } from 'react'
+import cx from 'classnames'
+
 import { Listbox, Transition } from '@headlessui/react'
 import { ChevronDownIcon, CheckIcon } from '@heroicons/react/solid'
-import cx from 'classnames'
 import { ColorSwatchIcon } from '@heroicons/react/outline'
 
-export function ThemeSwitcher({ activeTheme, setActiveTheme }) {
+// ------------------------------
+// Component
+// ------------------------------
+export function ThemeSwitcher() {
+  const themesList = ['base', 'rainforest', 'candy']
+  const [activeTheme, setActiveTheme] = useState('base')
+  // Update the `data-theme` attribute on the `<body>` tag to globally update the theme
   useEffect(() => {
     document.querySelector('body').setAttribute('data-theme', activeTheme)
   }, [activeTheme])
-
-  const themesList = ['base', 'rainforest', 'candy']
 
   return (
     <div className="fixed top-2 right-2 z-20 text-right">

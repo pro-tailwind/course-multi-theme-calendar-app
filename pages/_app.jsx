@@ -12,10 +12,17 @@ import { ThemeSwitcher } from '../components/theme-switcher'
 
 function MyApp({ Component, pageProps }) {
   const [selectedDate, setSelectedDate] = useState(today())
-  const [activeTheme, setActiveTheme] = useState('base')
   return (
     <SSRProvider>
-      {/* <ThemeSwitcher activeTheme={activeTheme} setActiveTheme={setActiveTheme} /> */}
+      {/* 
+        ------------------------------
+        TODO:
+        Uncomment the ThemeSwitcher component below to enable it!
+        ------------------------------
+      */}
+
+      {/* <ThemeSwitcher /> */}
+
       <div className="grid min-h-screen place-items-center">
         <BackgroundDecoration selectedDate={selectedDate} />
         <div className="mx-auto w-full max-w-5xl px-2 py-16 sm:px-6 lg:px-8 xl:max-w-7xl">
