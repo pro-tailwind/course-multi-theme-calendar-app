@@ -20,10 +20,10 @@ export function ThemeSwitcher() {
     <div className="fixed top-2 right-2 z-20 text-right">
       <Listbox value={activeTheme} onChange={setActiveTheme}>
         <div className="relative mt-1">
-          <Listbox.Button className="inline-flex w-full justify-center rounded-md bg-indigo-700/30 px-4 py-2 hover:bg-indigo-700/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50">
-            <ColorSwatchIcon className="h-5 w-5 text-indigo-100" />
+          <Listbox.Button className="bg-primary-700/30 hover:bg-primary-700/50 inline-flex w-full justify-center rounded-md px-4 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50">
+            <ColorSwatchIcon className="text-primary-100 h-5 w-5" />
             <ChevronDownIcon
-              className="ml-2 -mr-1 h-5 w-5 text-indigo-100 hover:text-indigo-50"
+              className="text-primary-100 hover:text-primary-50 ml-2 -mr-1 h-5 w-5"
               aria-hidden="true"
             />
           </Listbox.Button>
@@ -45,13 +45,13 @@ export function ThemeSwitcher() {
                     data-theme={theme}
                     className={cx(
                       'group flex w-full items-center py-2 pl-10 pr-4 text-sm font-semibold capitalize',
-                      (active || selected) && 'bg-indigo-100 text-indigo-600',
+                      (active || selected) && 'bg-primary-100 text-primary-600',
                       !active && !selected && 'text-slate-500'
                     )}
                   >
                     {theme}
                     {selected ? (
-                      <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-indigo-600">
+                      <span className="text-primary-600 absolute inset-y-0 left-0 flex items-center pl-3">
                         <CheckIcon className="h-5 w-5" aria-hidden="true" />
                       </span>
                     ) : null}

@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
         ------------------------------
       */}
 
-      {/* <ThemeSwitcher /> */}
+      <ThemeSwitcher />
 
       <div className="grid min-h-screen place-items-center">
         <BackgroundDecoration selectedDate={selectedDate} />

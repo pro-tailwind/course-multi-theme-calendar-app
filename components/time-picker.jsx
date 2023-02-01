@@ -52,7 +52,7 @@ export function TimePicker({ selectedDate, bookingAvailabilities }) {
                 return (
                   <li
                     key={time}
-                    className="rounded-lg bg-indigo-100 px-5 py-3 text-center font-semibold text-indigo-700 opacity-50
+                    className="bg-primary-100 text-primary-700 rounded-lg px-5 py-3 text-center font-semibold opacity-50
                     [@supports_not_(backdrop-filter:blur(0))]:line-through [@supports_not_(backdrop-filter:blur(0))]:opacity-30"
                   >
                     {time}
@@ -84,7 +84,7 @@ function TimeSlot({ availability, selectedTime, setSelectedTime }) {
     <li
       className={cx(
         'flex gap-1 overflow-hidden rounded-lg',
-        isSelected && 'bg-indigo-600 bg-stripes'
+        isSelected && 'bg-primary-600 bg-stripes'
       )}
     >
       <div
